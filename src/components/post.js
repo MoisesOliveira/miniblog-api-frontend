@@ -3,6 +3,7 @@ import axios from 'axios'
 import './style/post.css'
 export default class Post extends React.Component{
     state = {
+        user_id: '',
         id: '',
         content: null
     }
@@ -11,13 +12,17 @@ export default class Post extends React.Component{
     }
     handlePost = event =>{
         event.preventDefault()
+        const {history} = this.props;
         const token = localStorage.getItem('token')
-        let {id,content} = this.state;
-        id = '5635'
-        axios.post('http://localhost:5000/post',{id,content},{headers:{
-            'x-access-token': token}}).then(res=>{
-                this.props.history.push('/home')
-            })
+        let {id,user_id,content} = this.state;
+        user_id = localStorage.getItem('user_id')
+        id = this.generateID()
+        axios.post('http://localhost:5000/post',{id,user_id,content},{headers:{
+            'x-access-token': token}}).then( res =>{
+                this.setState({content: ''})
+                window.location.reload()
+            }
+            )
     }
     handleChange = event =>{
         this.setState({[event.target.value]:event.target.value})

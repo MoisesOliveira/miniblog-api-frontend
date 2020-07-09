@@ -10,7 +10,8 @@ export default class Login extends React.Component{
         username: '',
         password: '',
         token: '', 
-        response: ''
+        response: '',
+        user_id: ''
     }
     handleSubmit = async(event) =>{
         event.preventDefault()
@@ -18,7 +19,9 @@ export default class Login extends React.Component{
         await axios.post('http://localhost:5000/login',{},{auth: {username: username,password: password}})
         .then(res=>{
             this.setState({token: res.data['token']})
+            this.setState({user_id: res.data['user_id']})
             localStorage.setItem('token',this.state.token)
+            localStorage.setItem('user_id',this.state.user_id)
             this.props.history.push('/home')
             
         }).catch(res =>{
