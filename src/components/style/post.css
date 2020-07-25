@@ -3,7 +3,7 @@
 }
 
 .post textarea{
-    width: 70%;
+    width: 50%;
     height: 100px;
     resize: none;
     border: 2px solid rgb(150, 146, 146);
@@ -37,7 +37,22 @@
 
 .post{
     border: 0 solid rgb(170, 170, 170);
-    margin: 10px 600px;
+    text-align: center;
+    margin: 12px 400px;
     border-radius: 10px;
-    box-shadow: 1px 1px 1px 1px rgb(196, 196, 196);
+    box-shadow: 1px 1px 1px 2px rgb(196, 196, 196);
+    background-color: whitesmoke;
+}
+
+.home {
+    background-color: rgb(235, 235, 235);
+    min-height: 120vh;
+}
+
+.btn{
+    margin-right: 2px;
+}
+
+#comment_section{
+    background-color: rgb(235, 232, 232);
 }

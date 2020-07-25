@@ -13,10 +13,10 @@ export default class Login extends React.Component{
         response: '',
         user_id: ''
     }
-    handleSubmit = async(event) =>{
+    handleSubmit = (event) =>{
         event.preventDefault()
         const {username,password} = this.state;
-        await axios.post('http://localhost:5000/login',{},{auth: {username: username,password: password}})
+         axios.post('http://localhost:5000/login',{},{auth: {username: username,password: password}})
         .then(res=>{
             this.setState({token: res.data['token']})
             this.setState({user_id: res.data['user_id']})
@@ -40,7 +40,7 @@ export default class Login extends React.Component{
         return(
             <div class= "login">
                 <div class="header">
-                    <h2><Link to="/" className="link">Miniblog</Link></h2>
+                    <h2 class="link"><Link to="/" class="link"><h2>Miniblog</h2></Link></h2>
     
                 </div>
                 <div class="form">

@@ -5,7 +5,7 @@ export default class Post extends React.Component{
     state = {
         user_id: '',
         id: '',
-        content: null
+        content: ''
     }
     generateID = () =>{
         return Math.floor(Math.random()*125)
@@ -25,15 +25,16 @@ export default class Post extends React.Component{
             )
     }
     handleChange = event =>{
-        this.setState({[event.target.value]:event.target.value})
+        this.setState({[event.target.name]:event.target.value})
     }
+   
     render(){
         let content = this.state.content;
         return(
             <div>
-                <form class="post" onSubmit={this.handlePost}>
-                    <textarea name="content" value={content} onChange={e => this.handleChange(e)} type="text" placeholder="What have you been thinking about?"></textarea>
-                   
+                <form class="post" onSubmit={e => {this.handlePost(e)}}>
+                    <textarea name="content" value={content} onChange={e => this.handleChange(e)} type="text" placeholder="What have you been thinking about?" required></textarea>
+                    
                     <button type="submit">Send</button>
                    
                 </form>

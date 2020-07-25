@@ -22,7 +22,7 @@ export default class Register extends React.Component{
         .then(res=>{
             this.setState({response: res.data['message']})
             this.setState({link: res.data['link']})
-            this.props.history.push('/users')
+            this.props.history.push('/')
         }).catch(res => {
             this.setState({error: 'Something went wrong! Please try again'})
         })
